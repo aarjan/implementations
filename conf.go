@@ -1,7 +1,8 @@
+// A alternative implementation of github.com/aarjan/aaml by reading configuration files line-by-line
+
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -18,9 +19,7 @@ var config = `
 `
 
 func main() {
-	byt := bytes.NewBuffer([]byte(config))
-	bufReader := bufio.NewReader(byt)
-
+	bufReader := bytes.NewBufferString(config)
 	for {
 		l, err := bufReader.ReadString('\n')
 		if err != nil {
